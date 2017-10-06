@@ -1,0 +1,17 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://peer1:8000/eureka/,http://peer2:8001/eureka/
+server:
+  port: 8900
+spring:
+  application:
+    name: service-zuul
+zuul:
+  routes:
+    api-a:
+      path: /api-hello/**
+      serviceId: service-hello
+    api-b:
+      path: /api-hi/**
+      serviceId: service-hi
