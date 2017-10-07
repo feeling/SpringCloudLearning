@@ -3,7 +3,7 @@ eureka:
     serviceUrl:
       defaultZone: http://peer1:8000/eureka/,http://peer2:8001/eureka/
 server:
-  port: 7200
+  port: 7201
 spring:
   application:
     name: service-hi
@@ -11,7 +11,13 @@ spring:
     sampler:
       percentage: 1.0
   zipkin:
-      base-url: http://localhost:9411
+    enabled: true
+    locator:
+      discovery:
+        enabled: true
+    service:
+      name: zipkin-server
+
   cloud:
     config:
       label: master

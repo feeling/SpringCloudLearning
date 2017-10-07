@@ -9,7 +9,7 @@ RETVAL="0"
 
 # See how we were called.
 function start() {
-    echo  $Log 
+    echo  "$Log - $Jar" 
     if [ ! -f $Log ]; then
         touch $Log
     fi
@@ -25,7 +25,7 @@ function stop() {
         echo -n "boot ( pid $pid) is running" 
         echo 
         kill "$pid"
-        echo -n $"Shutting down boot: "
+        echo -n $"Shutting down boot: $Jar"
 
         pid2=$(ps -ef | grep -v 'grep' | grep "$Jar"| awk '{printf $2 " "}')
         if [ "$pid" == "$pid2" ]; then
