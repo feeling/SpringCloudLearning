@@ -27,12 +27,12 @@ public class ServiceHiApplication {
 	@Value("${server.port}")
 	String port;
 
-    @Value("${foo}")
-    String foo;
+    //@Value("${foo}")
+    //String foo;
 	@RequestMapping("/hi")
 	@HystrixCommand(fallbackMethod = "hiError")
 	public String home(@RequestParam String name) {
-		return "hi "+name+",i am from port:" +port +" foo:"+foo;
+		return "hi "+name+",i am from port:" +port +" foo:";
 	}
 
 	public String hiError(String name) {
